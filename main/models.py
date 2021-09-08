@@ -8,8 +8,8 @@ class UnitForm(models.Model):
     SELECTED="KURSNI TANLANG"
     BACKEND="BACK-END"
     GRAFIKDIZAYN="GRAFIK DIZAYN"
-    GRAFIKMODEL="GRAFIK DIZAYN"
-    FRONTEND="FRON-TEND"
+    GRAFIKMODEL="GRAFIK MODELLASHTIRISH"
+    FRONTEND="FRONT-END"
     ROBOTOTEXNIKA="ROBOTOTEXNIKA VA MEXATRONIKA"
     COURSES=(
         (SELECTED,SELECTED),
@@ -32,7 +32,7 @@ class UnitForm(models.Model):
         ('SIZGA QAYSI VAQT QULAY','SIZGA QAYSI VAQT QULAY'),
         ('ERTALAB (8-12)','ERTALAB (8-12)'),
         ('KECHKI (13-16)','KECHKI (13-16)'),
-        ('KECHKI (16-21)','ERTALAB (16-21)'),
+        ('KECHKI (16-21)','KECHKI (16-21)'),
     )
     time_managment=models.CharField(max_length=100,choices=CHOICE_TIME)
     group_number=models.CharField(max_length=10)

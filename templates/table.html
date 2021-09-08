@@ -16,7 +16,7 @@
 
 <body class="row justify-content-center align-items-center p-5 flex-column">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'index_url' %}">Navbar</a>
+        <a class="navbar-brand" href="{% url 'index_url' %}">IniteInn</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,16 +32,29 @@
             </ul>
         </div>
     </nav>
-    <h1>Back-end</h1>
-    <div class="card row flex-row p-2 m-1 header " style="width: 100vw;">
+    <h1>RO'YHAT</h1>
+    <form id="form_id" method="GET" action="{% url 'table_url' %}" id="tbb" class="card row flex-row p-2 m-1 header " style="width: 100vw;">
         <p class="col">Ism Familya</p>
         <p class="col">Tel raqam</p>
-        <p class="col">Yo'nalish</p>
-        <p class="col">Qulay vaqt</p>
+        <select class="col form-control form-control-sm" name="courses" required>
+            <option selected disabled>Kursni izlash...</option>
+            <option value="BACK-END">Back-end</option>
+            <option value="GRAFIK DIZAYN">Grafik dizayn</option>
+            <option value="GRAFIK MODELLASHTIRISH">Grafik modellashtirish</option>
+            <option value="FRONT-END">Front-end</option>
+            <option value="ROBOTOTEXNIKA VA MEXATRONIKA">Robototexnika va mexatronika</option>
+        </select>
+        <select class="col form-control form-control-sm" name="time" required>
+            <option selected disabled>Smen bo'yicha izlash...</option>
+            <option value="ERTALAB (8-12)">Ertalab (soat 8-12)</option>
+            <option value="KECHKI (13-16)">Kechki (soat 13-16)</option>
+            <option value="KECHKI (16-21)">Kechki (16-21)</option>
+        </select>
         <p class="col">Bosqich</p>
-        <p class="col">Guruh</p>
-        <p class="col">Reg.vaqti</p>
-    </div>
+        <input class="col form-control form-control-sm" type="text" name="group" placeholder="Guruhni izlash...">
+        <p class="col">Registratsiya vaqti</p>
+        <input id="button_id" type="submit" value="izlash" class="col btn btn-success"  />
+    </form>
     {% if users %}
     {% for user in users %}
     <div class="card row flex-row p-2 m-1 data " style="width: 100vw;">
@@ -53,7 +66,12 @@
         <p class="col">{{user.course_number}}</p>
         <p class="col">{{user.group_number}}GKK</p>
         <p class="col">{{user.time_at}}</p>
-
+        {% if request.user.is_staff %}
+        <form class="col" action="{% url 'table_url' %}" method='delete'>
+            {% csrf_token %}
+        <a class="btn btn-danger" href="{% url 'delete_url' id=user.id %}">Delete</a>
+        </form>
+        {% endif %}
     </div>
     {% endfor %}
     {% else %}
@@ -65,8 +83,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>

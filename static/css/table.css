@@ -13,7 +13,7 @@ h1{
 .col{
     justify-content: center;
 }
-div.header p{
+#tbb p{
     font-weight: 700;
 }
 .direction, .time{
