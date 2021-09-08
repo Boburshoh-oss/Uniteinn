@@ -1,0 +1,72 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './css/table.css' %}">
+    <title>Jadval</title>
+</head>
+
+<body class="row justify-content-center align-items-center p-5 flex-column">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index_url' %}">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index_url'  %}">Bosh sahifa <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register_url' %}">Kursga yozilish</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Back-end</h1>
+    <div class="card row flex-row p-2 m-1 header " style="width: 100vw;">
+        <p class="col">Ism Familya</p>
+        <p class="col">Tel raqam</p>
+        <p class="col">Yo'nalish</p>
+        <p class="col">Qulay vaqt</p>
+        <p class="col">Bosqich</p>
+        <p class="col">Guruh</p>
+        <p class="col">Reg.vaqti</p>
+    </div>
+    {% if users %}
+    {% for user in users %}
+    <div class="card row flex-row p-2 m-1 data " style="width: 100vw;">
+
+        <p class="col">{{user.name}}</p>
+        <p class="col">{{user.phone}}</p>
+        <p class="col direction ">{{user.direction}}</p>
+        <p class="col time">{{user.time_managment}}</p>
+        <p class="col">{{user.course_number}}</p>
+        <p class="col">{{user.group_number}}GKK</p>
+        <p class="col">{{user.time_at}}</p>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class='center'>
+        <p>hech qanday ro'yhat mavjud emas</p>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+        {% block title %}
+            
+        {% endblock title %}
+    </title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
+	<script src="{% static 'js/mobile.js' %}" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div>
+				<a href="index.html" class="logo">UniteInn</a>
+				<ul id="navigation">
+					<li>
+						<a href="contact.html">Kursga yozilish</a>
+					</li>
+					<li>
+						<a href="about.html">Biz haqimizda</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    {% block content %}
+    
+    {% endblock content%}
+</body>
+</html>

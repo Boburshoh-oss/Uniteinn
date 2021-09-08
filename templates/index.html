@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UniteInn</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
+	<script src="{% static 'js/mobile.js' %}" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div>
+				<a href="{% url 'index_url' %}" class="logo">UniteInn</a>
+				<ul id="navigation">
+					<li>
+						<a href="{% url 'register_url' %}">Kursga yozilish</a>
+					</li>
+					<li>
+						<a href="{% url 'about_url' %}">Biz haqimizda</a>
+					</li>
+					
+					<li>
+						<a href="{% url 'table_url' %}">Ro'yhat</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="body" class="home">
+			<div class="header">
+				<div>
+					<img src="{% static 'images/satellite.png' %}" alt="" class="satellite">
+					<h1>Biz bilan</h1>
+					<h2>yorqin kelajak sari</h2>
+				</div>
+			</div>
+			<div class="body">
+				<div>
+					<h1>Bizning shior</h1>
+					<p><i>"Buyuk ishlar ham oddiy qadamlar bilan boshlanadi!"</i></p><br>
+					<p><b>UniteInn</b> bilan birga rivojlaning.</p>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="connect">
+					<div>
+						<h1>Ijtimoiy tarmoqda bizni kuzatib boring</h1>
+						<a target="_blank" href="https://t.me/birlashgan_inno" style="text-decoration: none; color: rgb(77, 127, 235);">
+							<i style="font-size: 35px; margin: 11px 0 0 25px;" class="fa fa-telegram"></i>
+						</a>
+					</div>
+				</div>
+				<div class="footnote">
+					<div>
+						<p>&copy; 2021 Barcha huquqlar himoyalangan</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
