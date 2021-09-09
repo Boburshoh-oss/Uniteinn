@@ -33,9 +33,7 @@
         </div>
     </nav>
     <h1>RO'YHAT</h1>
-    <form id="form_id" method="GET" action="{% url 'table_url' %}" id="tbb" class="card row flex-row p-2 m-1 header " style="width: 100vw;">
-        <p class="col">Ism Familya</p>
-        <p class="col">Tel raqam</p>
+    <form id="form_id" method="GET" action="{% url 'table_url' %}" id="tbb" class="header card flex-row flex-wrap p-2 m-1" style="width: 100vw;">
         <select class="col form-control form-control-sm" name="courses" required>
             <option selected disabled>Kursni izlash...</option>
             <option value="BACK-END">Back-end</option>
@@ -50,39 +48,44 @@
             <option value="KECHKI (13-16)">Kechki (soat 13-16)</option>
             <option value="KECHKI (16-21)">Kechki (16-21)</option>
         </select>
-        <p class="col">Bosqich</p>
+
+
+        <input name="group" type="text" class="col form-control form-control-sm" placeholder="Guruhni qidirish">
+        <input type="submit" class="btn btn-success" value="Qidirish">
+        <!-- <p class="col">Bosqich</p>
         <input class="col form-control form-control-sm" type="text" name="group" placeholder="Guruhni izlash...">
         <p class="col">Registratsiya vaqti</p>
-        <input id="button_id" type="submit" value="izlash" class="col btn btn-success"  />
+        <input id="button_id" type="submit" value="izlash" class="col btn btn-success"  /> -->
     </form>
     {% if users %}
     {% for user in users %}
-    <div class="card row flex-row p-2 m-1 data " style="width: 100vw;">
-
-        <p class="col">{{user.name}}</p>
-        <p class="col">{{user.phone}}</p>
-        <p class="col direction ">{{user.direction}}</p>
-        <p class="col time">{{user.time_managment}}</p>
-        <p class="col">{{user.course_number}}</p>
-        <p class="col">{{user.group_number}}GKK</p>
-        <p class="col">{{user.time_at}}</p>
-        {% if request.user.is_staff %}
-        <form class="col" action="{% url 'table_url' %}" method='delete'>
-            {% csrf_token %}
-        <a class="btn btn-danger" href="{% url 'delete_url' id=user.id %}">Delete</a>
-        </form>
+    <div class="boxes d-flex">
+        <div class="c row">
+            <p> <b>Ism:</b> {{user.name}}</p>
+            <p> <b>Tel:</b> {{user.phone}}</p>
+            <p> <b>Yo'nalish:</b> {{user.direction}}</p>
+            <p> <b>Kurs vaqti:</b> {{user.time_managment}}</p>
+            <p> <b>Bosqich:</b> {{user.course_number}}</p>
+            <p> <b>Guruh:</b> {{user.group_number}}GKK</p>
+            <p> <b>Sana:</b> {{user.time_at}}</p>
+            {% if request.user.is_staff %}
+            <form action="{% url 'table_url' %}" method='delete'>
+                {% csrf_token %}
+                <a style="font-size: 15px;" class="btn btn-danger p-0" href="{% url 'delete_url' id=user.id %}">Delete</a>
+            </form>
+        </div>
         {% endif %}
     </div>
     {% endfor %}
     {% else %}
-    <div class='center'>
-        <p>hech qanday ro'yhat mavjud emas</p>
+    <div style="display: absolute; left: 50%; top:50%; transform: translate(-50%, -50%);" >
+        <h1 style="font-size: 50px;" >Ro'yhat bo'sh</h1>
     </div>
     {% endif %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@
 				<div class="contact">
 					<h1>Ro'yhatdan o'tish</h1>
 					<h2>Biz bilan porloq kelajak sari!</h2>
-					<form action="{% url 'register_url' %}" method="POST">
+					<form id="forma" action="{% url 'register_url' %}" method="POST">
 						{% csrf_token %}
 						{{form}}
 						{% comment %} <input type="text" name="name" placeholder="Ism Familya" required>
