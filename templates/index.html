@@ -10,6 +10,32 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
 	<script src="{% static 'js/mobile.js' %}" type="text/javascript"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		#ell{
+			position: absolute;
+			left: 50vw;
+			transform: translate(-50%, -50%);
+			z-index: 100;
+			outline: none;
+			border: 1px solid rgba(18, 150, 238, 0.329);
+			width: 30vw;
+			height: 70px;
+			font-size: 1.3em;
+			font-family: "Tahoma";
+			font-weight: 900;
+			border-radius: 10px;
+			background: linear-gradient(45deg, rgb(184, 100, 100), rgb(123, 61, 224));
+			color: rgb(255, 255, 255);
+			box-shadow: 0 0 20px black;
+			margin-top: 150px;
+		}
+		#ell a{
+			font-family: "Tahoma";
+			font-weight: 900;
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body>
 	<div id="page">
@@ -32,6 +58,10 @@
 		</div>
 		<div id="body" class="home">
 			<div class="header">
+				
+				<!--    ***********************************    Button *************************       -->
+
+								<button id="ell"  > <a href="{% url 'register_url' %}">Kursga yozilish</a> </button>
 				<div>
 					<img src="{% static 'images/satellite.png' %}" alt="" class="satellite">
 					<h1>Biz bilan</h1>

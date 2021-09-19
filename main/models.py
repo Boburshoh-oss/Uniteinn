@@ -6,11 +6,13 @@ class UnitForm(models.Model):
     name=models.CharField(max_length=100)
     phone=models.CharField(max_length=13)
     SELECTED="KURSNI TANLANG"
-    BACKEND="BACK-END"
+    BACKEND="PYTHON dasturlash tili (back-end)"
     GRAFIKDIZAYN="GRAFIK DIZAYN"
     GRAFIKMODEL="GRAFIK MODELLASHTIRISH"
-    FRONTEND="FRONT-END"
+    FRONTEND="JAVASCRIPT dasturlash tili (front-end)"
     ROBOTOTEXNIKA="ROBOTOTEXNIKA VA MEXATRONIKA"
+    SMM="SMM kursi (online marketing)"
+    ANDROID="ANDROID mobil dasturlash"
     COURSES=(
         (SELECTED,SELECTED),
         (BACKEND,BACKEND),
@@ -18,6 +20,8 @@ class UnitForm(models.Model):
         (GRAFIKMODEL,GRAFIKMODEL),
         (FRONTEND,FRONTEND),
         (ROBOTOTEXNIKA,ROBOTOTEXNIKA),
+        (SMM,SMM),
+        (ANDROID,ANDROID)
     )
     direction=models.CharField(choices=COURSES,max_length=100)
     section=(
@@ -28,13 +32,13 @@ class UnitForm(models.Model):
         ("4","4"),
         ("O'qituvchi","O'qituvchi")
     )
-    CHOICE_TIME=(
-        ('SIZGA QAYSI VAQT QULAY','SIZGA QAYSI VAQT QULAY'),
-        ('ERTALAB (8-12)','ERTALAB (8-12)'),
-        ('KECHKI (13-16)','KECHKI (13-16)'),
-        ('KECHKI (16-21)','KECHKI (16-21)'),
-    )
-    time_managment=models.CharField(max_length=100,choices=CHOICE_TIME)
+    # CHOICE_TIME=(
+    #     ('SIZGA QAYSI VAQT QULAY','SIZGA QAYSI VAQT QULAY'),
+    #     ('ERTALAB (8-12)','ERTALAB (8-12)'),
+    #     ('KECHKI (13-16)','KECHKI (13-16)'),
+    #     ('KECHKI (16-21)','KECHKI (16-21)'),
+    # )
+    # time_managment=models.CharField(max_length=100,choices=CHOICE_TIME,null=True)
     group_number=models.CharField(max_length=10)
     course_number=models.CharField(choices=section,max_length=100)
     

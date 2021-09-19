@@ -5,6 +5,7 @@ from .models import UnitForm
 from .forms import ReceiveForm
 from django.contrib import messages
 from django.db.models import Q
+from .forms import ReceiveForm
 
 
 # Create your views here.
@@ -13,17 +14,17 @@ def index_view(request):
     
 def table_view(request):
     direction=request.GET.get('courses','')
-    time_managment=request.GET.get('time','')
-    group=request.GET.get('group','')
-    query_list=Q(direction=direction) | Q(time_managment=time_managment)
-    if group=='' and (direction or time_managment):
+    keyvalue=request.GET.get('keyvalue','')
+    if keyvalue!='':
+        print(keyvalue)
+        # query_list=Q(name__contains=keyvalue)
+        query_list=Q(direction__icontains=keyvalue) | Q(name__icontains=keyvalue)
         user=UnitForm.objects.filter(query_list).order_by('-time_at')
-    elif group!='':
-        query_list=Q(direction=direction) | Q(time_managment=time_managment) |Q(group_number__icontains=group)
+    elif direction!='':
+        query_list=Q(direction=direction)
         user=UnitForm.objects.filter(query_list).order_by('-time_at')
     else:
         user=UnitForm.objects.all().order_by('-time_at')
-
     return render(request,'table.html',context={'users':user})
 
 
@@ -39,10 +40,15 @@ def register_view(request):
     if request.method=="POST":
         form=ReceiveForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['direction']!=UnitForm.COURSES[0][0] or form.cleaned_data['time_managment']!=UnitForm.CHOICE_TIME[0][0] or form.cleaned_data['course_number']!=UnitForm.section[0][0]:
-                form.save()
-                return redirect('index_url')
+            if UnitForm.COURSES[0][0]==form.cleaned_data['direction']:
+                messages.error(request, "Iltimos kursni tanlang")
+            elif UnitForm.section[0][0]==form.cleaned_data['course_number']:
+                messages.error(request, "Iltimos bosqichingizni tanlang")
             else:
-                messages.info(request,"Iltimos kerakli maydonlarni to'ldiring")
+                if  UnitForm.objects.filter(phone=form.cleaned_data['phone']).count()==0:
+                    form.save()
+                    messages.success(request, "Siz muvaffaqiyatli ro'yhatdan o'tdingiz. Siz bilan tez orada bog'lanamiz")
+                else:
+                    messages.error(request, "Siz avval ro'yhatdan o'tgansiz.")
     form=ReceiveForm()
     return render(request,'contact.html',context={'form':form})

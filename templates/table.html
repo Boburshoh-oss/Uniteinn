@@ -16,7 +16,7 @@
 
 <body class="row justify-content-center align-items-center p-5 flex-column">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'index_url' %}">IniteInn</a>
+        <a class="navbar-brand" href="{% url 'index_url' %}">UNITEInn</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,21 +36,16 @@
     <form id="form_id" method="GET" action="{% url 'table_url' %}" id="tbb" class="header card flex-row flex-wrap p-2 m-1" style="width: 100vw;">
         <select class="col form-control form-control-sm" name="courses" required>
             <option selected disabled>Kursni izlash...</option>
-            <option value="BACK-END">Back-end</option>
-            <option value="GRAFIK DIZAYN">Grafik dizayn</option>
+            <option value="PYTHON dasturlash tili (back-end)">PYTHON dasturlash tili (back-end)</option>
+            <option value="GRAFIK DIZAYN">GRAFIK DIZAYN</option>
             <option value="GRAFIK MODELLASHTIRISH">Grafik modellashtirish</option>
-            <option value="FRONT-END">Front-end</option>
+            <option value="JAVASCRIPT dasturlash tili (front-end)">JAVASCRIPT dasturlash tili (front-end)</option>
             <option value="ROBOTOTEXNIKA VA MEXATRONIKA">Robototexnika va mexatronika</option>
-        </select>
-        <select class="col form-control form-control-sm" name="time" required>
-            <option selected disabled>Smen bo'yicha izlash...</option>
-            <option value="ERTALAB (8-12)">Ertalab (soat 8-12)</option>
-            <option value="KECHKI (13-16)">Kechki (soat 13-16)</option>
-            <option value="KECHKI (16-21)">Kechki (16-21)</option>
+            <option value="SMM kursi (online marketing)">SMM kursi (online marketing)</option>
+            <option value="ANDROID mobil dasturlash">ANDROID mobil dasturlash</option>
         </select>
 
-
-        <input name="group" type="text" class="col form-control form-control-sm" placeholder="Guruhni qidirish">
+        <input name="keyvalue" type="text" class="col form-control form-control-sm" placeholder="keyword">
         <input type="submit" class="btn btn-success" value="Qidirish">
         <!-- <p class="col">Bosqich</p>
         <input class="col form-control form-control-sm" type="text" name="group" placeholder="Guruhni izlash...">
@@ -58,13 +53,14 @@
         <input id="button_id" type="submit" value="izlash" class="col btn btn-success"  /> -->
     </form>
     {% if users %}
-    {% for user in users %}
+    <h1>JAMI: {{users.count}}</h1>
+    {% for user in users%}
     <div class="boxes d-flex">
         <div class="c row">
+            <p> <b>№:</b>{{user.id}}</p>
             <p> <b>Ism:</b> {{user.name}}</p>
             <p> <b>Tel:</b> {{user.phone}}</p>
             <p> <b>Yo'nalish:</b> {{user.direction}}</p>
-            <p> <b>Kurs vaqti:</b> {{user.time_managment}}</p>
             <p> <b>Bosqich:</b> {{user.course_number}}</p>
             <p> <b>Guruh:</b> {{user.group_number}}GKK</p>
             <p> <b>Sana:</b> {{user.time_at}}</p>
