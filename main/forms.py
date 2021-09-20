@@ -36,6 +36,10 @@ class ReceiveForm(forms.ModelForm):
         max_length=100,
         widget=forms.Select(choices=UnitForm.section),
     )
+    time_managment=forms.CharField(
+        max_length=100,
+        widget=forms.Select(choices=UnitForm.CHOICE_TIME),
+    )
     group_number=forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder':"Guruhingizni kiriting"}))
     class Meta:
         model=UnitForm

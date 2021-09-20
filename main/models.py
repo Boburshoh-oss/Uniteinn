@@ -32,13 +32,12 @@ class UnitForm(models.Model):
         ("4","4"),
         ("O'qituvchi","O'qituvchi")
     )
-    # CHOICE_TIME=(
-    #     ('SIZGA QAYSI VAQT QULAY','SIZGA QAYSI VAQT QULAY'),
-    #     ('ERTALAB (8-12)','ERTALAB (8-12)'),
-    #     ('KECHKI (13-16)','KECHKI (13-16)'),
-    #     ('KECHKI (16-21)','KECHKI (16-21)'),
-    # )
-    # time_managment=models.CharField(max_length=100,choices=CHOICE_TIME,null=True)
+    CHOICE_TIME=(
+        ('SIZGA QAYSI VAQT QULAY','SIZGA QAYSI VAQT QULAY'),
+        ('ERTALAB (8-12)','ERTALAB (8-12)'),
+        ('KECHKI (13-20)','KECHKI (13-20)')
+    )
+    time_managment=models.CharField(max_length=100,choices=CHOICE_TIME,null=True)
     group_number=models.CharField(max_length=10)
     course_number=models.CharField(choices=section,max_length=100)
     

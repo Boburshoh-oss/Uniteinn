@@ -44,6 +44,8 @@ def register_view(request):
                 messages.error(request, "Iltimos kursni tanlang")
             elif UnitForm.section[0][0]==form.cleaned_data['course_number']:
                 messages.error(request, "Iltimos bosqichingizni tanlang")
+            elif UnitForm.CHOICE_TIME[0][0]==form.cleaned_data['time_managment']:
+                messages.error(request, "Iltimos kurs vaqtini tanlang tanlang")
             else:
                 if  UnitForm.objects.filter(phone=form.cleaned_data['phone']).count()==0:
                     form.save()
